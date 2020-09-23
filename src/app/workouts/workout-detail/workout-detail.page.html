@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/workouts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ loadedWorkout.name }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onDeleteWorkout()"><ion-icon name="trash" slot="icon-only"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col>
+        <ion-button [routerLink]="['./', 'edit']">edit</ion-button>
+        <h1 class="ion-text-center"> {{loadedWorkout.name}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list>
+          <ion-item *ngFor ="let exer of loadedWorkout.exercises" [routerLink]="['./timer', exer.id]">
+            <!-- <ion-icon *ngIf="" name="checkmark-circle"></ion-icon> -->
+            {{exer.isFinished}} {{ exer.name }} reps: {{exer.reps}} sets: {{exer.sets}} rest time: {{exer.rest_time}}
+            <ion-button><ion-icon class="play" name="play" slot="icon-only"></ion-icon></ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

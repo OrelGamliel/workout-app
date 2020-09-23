@@ -1,0 +1,18 @@
+#progress-circle {
+    margin-top: 50px;
+    transform: rotate(-90deg);
+}
+.timer-text{
+    transform: rotate(90deg);
+    transform-origin: center;
+    font-size: 36px;
+    text-anchor: middle;
+    font-size: 600;
+    fill: #333;
+}
+svg{
+    height: 70vh;
+    width: auto;
+    margin: auto;
+    display: block;
+}

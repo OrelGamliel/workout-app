@@ -1,0 +1,7 @@
+{
+  "name": "workout-app-real",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

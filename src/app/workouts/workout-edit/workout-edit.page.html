@@ -1,0 +1,89 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/workouts"></ion-back-button>
+      </ion-buttons>
+        <ion-title>workout-edit</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form
+        [formGroup]="workoutForm"
+        (ngSubmit)="onSubmit()"
+    >
+        <ion-item>
+            <ion-button
+                ion-button
+                type="submit"
+                block
+                [disabled] = "!workoutForm.valid"
+                
+
+            >
+                Save
+            </ion-button>
+            <ion-button
+                ion-button
+                type="button"
+                block
+            >
+                Cancel
+            </ion-button>
+        </ion-item>
+        <ion-item>
+            <ion-label>name</ion-label>
+            <ion-input
+                type="text"
+                formControlName="name"
+                name="title"
+            ></ion-input>
+        </ion-item>
+        <ion-col formArrayName="exercises">
+            <ion-row
+                *ngFor="let exerciseCtrl of controls; let i = index"
+                [formGroupName]="i"
+
+            >
+                <ion-item>
+                    <ion-label>Exercise name</ion-label>
+                    <ion-input
+                        formControlName="name"
+                        type="text"
+                        name="exercise_name"
+                    ></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>reps</ion-label>
+                    <ion-input
+                        formControlName="reps"
+                        type="number"
+                        name="reps"
+                    ></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>sets</ion-label>
+                    <ion-input
+                        formControlName="sets"
+                        type="number"
+                        name="sets"
+                    ></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>rest_time</ion-label>
+                    <ion-input
+                        formControlName="rest_time"
+                        type="number"
+                        name="rest_time"
+                    ></ion-input>
+                </ion-item>
+                <ion-button type="button"(click)="onDeleteExercise(i)">X</ion-button>
+                
+            </ion-row>
+            <ion-row>
+              <ion-button type="button"(click)="onAddExercise()">Add Exercise</ion-button>
+            </ion-row>
+        </ion-col>
+    </form>
+
+</ion-content>
