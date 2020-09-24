@@ -27,6 +27,7 @@
                 ion-button
                 type="button"
                 block
+                (click)="goback()"
             >
                 Cancel
             </ion-button>
@@ -75,6 +76,14 @@
                         formControlName="rest_time"
                         type="number"
                         name="rest_time"
+                    ></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>weight</ion-label>
+                    <ion-input
+                        formControlName="weight"
+                        type="number"
+                        name="weight"
                     ></ion-input>
                 </ion-item>
                 <ion-button type="button"(click)="onDeleteExercise(i)">X</ion-button>

@@ -7,6 +7,7 @@ import { Exercise } from '../exercise.model';
 import { Workout } from '../workout.model';
 import { Location } from '@angular/common';
 import { NavController } from '@ionic/angular';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 
 const params = {
@@ -26,7 +27,8 @@ export class WorkoutEditPage implements OnInit {
     private workoutsService: WorkoutsService,
     //(possible go back method) private navCtrl:NavController,
     private _location: Location,
-    private router: Router) { }
+    private router: Router,
+    private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -77,6 +79,10 @@ export class WorkoutEditPage implements OnInit {
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/)
               ]),
+              weight: new FormControl(exercise.weight, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/)
+              ]),
             }))
           )
         }
@@ -103,6 +109,7 @@ export class WorkoutEditPage implements OnInit {
       this.workoutsService.addWorkout(newWorkout)
       this.router.navigate(['./workouts']);
     }
+    this.dataStorageService.storeWorkouts()
   }
   onAddExercise() {
     (<FormArray>this.workoutForm.get('exercises')).push(
@@ -119,6 +126,10 @@ export class WorkoutEditPage implements OnInit {
           Validators.pattern(/^[1-9]+[0-9]*$/)
         ]),
         sets: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/)
+        ]),
+        weight: new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]+[0-9]*$/)
         ])

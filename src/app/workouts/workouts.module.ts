@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { WorkoutsPageRoutingModule } from './workouts-routing.module';
 
 import { WorkoutsPage } from './workouts.page';
+import { LoadingSpinComponent } from '../shared/loading-spin/loading-spin.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    WorkoutsPageRoutingModule
+    WorkoutsPageRoutingModule,
+    
   ],
-  declarations: [WorkoutsPage]
+  declarations: [WorkoutsPage,LoadingSpinComponent]
 })
 export class WorkoutsPageModule {}

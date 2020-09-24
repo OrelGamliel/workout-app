@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-button (click)="putWorkouts()"> cv</ion-button>
-    <ion-button (click)="fetchWorkouts()"> fd</ion-button>
+    <ion-button (click)="putWorkouts()"> save</ion-button>
+    <ion-button (click)="fetchWorkouts()"> fetch</ion-button>
     <ion-title>workouts</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,6 +10,7 @@
   <ion-item>
     <ion-button [routerLink]="['./', 'new']">new</ion-button>
   </ion-item>
+  <app-loading-spin *ngIf="showSpinner"></app-loading-spin>
   <ion-list>
     <ion-item *ngFor="let workout of workouts" [routerLink]="['./', workout.id]">
       <ion-label> {{workout.name}}</ion-label>

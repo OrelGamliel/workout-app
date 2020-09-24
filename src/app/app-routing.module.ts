@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { WorkoutResolverService } from './workout-resolver.service';
 
 const routes: Routes = [
   {
@@ -26,10 +27,12 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('./workouts/workout-detail/workout-detail.module').then(m => m.WorkoutDetailPageModule),
+            resolve: [WorkoutResolverService]
           },
           {
             path: 'edit',
             loadChildren: () => import('./workouts/workout-edit/workout-edit.module').then(m => m.WorkoutEditPageModule),
+            resolve: [WorkoutResolverService]
           },
           {
             path: 'timer',

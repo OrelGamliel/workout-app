@@ -23,8 +23,8 @@
         <ion-list>
           <ion-item *ngFor ="let exer of loadedWorkout.exercises" [routerLink]="['./timer', exer.id]">
             <!-- <ion-icon *ngIf="" name="checkmark-circle"></ion-icon> -->
-            {{exer.isFinished}} {{ exer.name }} reps: {{exer.reps}} sets: {{exer.sets}} rest time: {{exer.rest_time}}
-            <ion-button><ion-icon class="play" name="play" slot="icon-only"></ion-icon></ion-button>
+            <strong>{{ exer.name }}:</strong> reps: <strong>{{exer.reps}}</strong> sets:<strong> {{exer.sets}}</strong> weight: <strong>{{exer.weight}}</strong> rest time: <strong>{{exer.rest_time}}</strong> 
+            <ion-button class="playz"><ion-icon class="play" name="play" slot="icon-only" ></ion-icon></ion-button>
           </ion-item>
         </ion-list>
       </ion-col>

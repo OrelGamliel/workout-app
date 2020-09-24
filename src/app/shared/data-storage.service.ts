@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WorkoutsService } from '../workouts/workouts.service';
 import { Workout } from '../workouts/workout.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +21,17 @@ export class DataStorageService {
       });
     }
     fetchWorkouts(){
-      this.http
+      return this.http
       .get<Workout[]>('https://workout-app-orel.firebaseio.com/workouts.json')
       .pipe(map(workouts => {
         return workouts.map(workout => {
-          return {...workout, exercises: workout.exercises ? workout.exercises : []}
+          return {...workout, exercises: workout.exercises ? workout.exercises : []};
         });
-      }))
-      .subscribe(workouts => {
-        this.workoutsService.setWorkouts(workouts)
-      });
+      }),
+      tap(workouts => {
+        this.workoutsService.setWorkouts(workouts);
+      })
+      )
     }
 
 }
