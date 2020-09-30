@@ -11,6 +11,7 @@ import { DataStorageService } from './shared/data-storage.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

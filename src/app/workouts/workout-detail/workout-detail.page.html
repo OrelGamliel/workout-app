@@ -19,6 +19,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
+
       <ion-col >
         <ion-list>
           <ion-item *ngFor ="let exer of loadedWorkout.exercises" [routerLink]="['./timer', exer.id]">
